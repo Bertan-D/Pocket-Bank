@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -35,6 +36,6 @@ public class Customer {
     private Instant registerTimestamp = Instant.now();
 
     @OneToMany
-    private ArrayList<Account> accounts;
+    private List<Account> accounts;
 
 }

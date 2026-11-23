@@ -5,11 +5,13 @@ import com.example.pocketBank.enums.AccountType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.UUID;
 
 @Getter
@@ -37,4 +39,7 @@ public class Account {
 
     @Column(nullable = false)
     private Instant creationDate = Instant.now();
+
+    @OneToMany
+    private ArrayList<Card> cards;
 }

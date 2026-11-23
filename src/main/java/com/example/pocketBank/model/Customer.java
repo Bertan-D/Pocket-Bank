@@ -1,11 +1,10 @@
 package com.example.pocketBank.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.UUID;
 
 @Getter
@@ -34,5 +33,8 @@ public class Customer {
 
     @Column
     private Instant registerTimestamp = Instant.now();
+
+    @OneToMany
+    private ArrayList<Account> accounts;
 
 }

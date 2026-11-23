@@ -6,11 +6,11 @@ import com.example.pocketBank.model.Account;
 
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.time.ZonedDateTime;
 import java.util.UUID;
 
 public record AccountDTO(
         UUID id,
+        UUID customerId,
         String iban,
         AccountType accountType,
         BigDecimal balance,
@@ -20,6 +20,7 @@ public record AccountDTO(
     public static AccountDTO from(Account account) {
         return new AccountDTO(
                 account.getId(),
+                account.getCustomer().getId(),
                 account.getIban(),
                 account.getAccountType(),
                 account.getBalance(),
@@ -27,5 +28,4 @@ public record AccountDTO(
                 account.getCreationDate()
         );
     }
-
 }

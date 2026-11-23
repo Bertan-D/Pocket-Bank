@@ -1,23 +1,23 @@
 package com.example.pocketBank.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 @Entity
 public class Customer {
 
     @Id
-    @Column(nullable = false)
     private UUID id = UUID.randomUUID();
 
     @Column(nullable = false)
@@ -26,16 +26,15 @@ public class Customer {
     @Column(nullable = false)
     private String lastName;
 
-    @Column(unique = true, nullable = false)
-    private String eMail;
+    @Column(nullable = false, unique = true)
+    private String email;
 
     @Column(nullable = false)
-    private Instant dateOfBirth;
+    private LocalDate dateOfBirth;
 
-    @Column
+    @Column(nullable = false)
     private Instant registerTimestamp = Instant.now();
 
-    @OneToMany
-    private List<Account> accounts;
-
+    @OneToMany(mappedBy = "customer")
+    private List<Account> accounts = new ArrayList<>();
 }
